@@ -45,8 +45,12 @@ ROC-AUC 0.67 \
 Precision (Churn) 0.40 \
 Recall (Churn) 0.60 \
 F1-Score (Churn) 0.48 \
- 
+Though XGBoost was the best performer out of all the 3 models, it didn't really achieve desirable metrics.
+The model has a precision score of 40% on predicting customers that would churn, which means that out of all predicted customers that would churn, 40% were actual churners, the other 60% being false alarms.
+60% on recall, of the actual customers that churned, the model managed to catch 60% of them correctly, 40% were missed. 
 > Recall was prioritized as the key metric because in a churn context, missing a churner is more costly than a false alarm.
+
+Obviously there is still a lot of work that needs to be done in terms of improving model performance.
  
 ### Churn Distribution
 ![Churn Distribution](churn_distribution.png)
