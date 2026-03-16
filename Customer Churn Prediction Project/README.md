@@ -13,9 +13,9 @@ Customer churn is one of the most costly challenges in the telecom industry. Ret
 ## 📂 Dataset
  
 - **Source:** [Kaggle - Cell2Cell Telecom Churn](https://www.kaggle.com/datasets/jpacse/datasets-for-churn-telecom/data)
-- **Train set:** ~51,047 records with Churn labels
+- **Train set:** 51,047 records with Churn labels
 - **Test set:** 20,000 Unlabeled records for prediction
-- **Target variable:** `Churn` (binary -1: Churned, 0: Retained)
+- **Target variable:** `Churn` (binary- 1: Churned, 0: Retained)
 - **Features:** Customer demographics, usage patterns, billing info, service interactions and more
  
 ---
