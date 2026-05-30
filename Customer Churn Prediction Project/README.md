@@ -1,54 +1,51 @@
-# 📉 Telecom Customer Churn Prediction
+# Telecom Customer Churn Prediction
  
 Predicting customer churn for a telecom company using machine learning. Built on the [Cell2Cell Telecom Churn Dataset](https://www.kaggle.com/datasets/jpacse/datasets-for-churn-telecom/data) from Kaggle.
  
 ---
  
-## 📌 Problem Statement
+## Problem Statement
  
 Customer churn is one of the most costly challenges in the telecom industry. Retaining an existing customer is significantly cheaper than acquiring a new one. This project is aimed at building a classification model to identify customers at risk of churning, enabling the business to take proactive retention action.
  
 ---
  
-## 📂 Dataset
+## Dataset
  
 - **Source:** [Kaggle - Cell2Cell Telecom Churn](https://www.kaggle.com/datasets/jpacse/datasets-for-churn-telecom/data)
-- **Train set:** 51,047 records with Churn labels
+- **Train set:** 71,047 records with Churn labels
 - **Test set:** 20,000 Unlabeled records for prediction
 - **Target variable:** `Churn` (binary- 1: Churned, 0: Retained)
 - **Features:** Customer demographics, usage patterns, billing info, service interactions and more
  
 ---
  
-## 🛠️ Methodology
+## Methodology
  
 1. **Data Cleaning**: handled missing values, fixed data types, dropped high-null columns
-2. **Feature Engineering**: created features such as `OfferAcceptanceRate` and `CustomerSupportMonth` and ` FinancialDistressScore`
-3. **Exploratory Data Analysis (EDA)**: analyzed churn distribution, feature correlations and customer segments
-4. **Preprocessing Pipeline**: scaling, encoding using the `ColumnTransformer`
-5. **Class Imbalance**: addressed using SMOTETOMEK sampling on training data only
+2. **Feature Engineering**: created features such as OfferAcceptanceRate and CustomerSupportMonth and FinancialDistressScore
+3. **Exploratory Data Analysis (EDA)**: analyzed churn distribution, feature correlations and customer segments using RFM analysis
+4. **Preprocessing Pipeline**: scaling, encoding using the ColumnTransformer
+5. **Class Imbalance**: addressed using class weights
 6. **Modeling**: trained and tuned three gradient boosting models:
-   - XGBoost ✅ (best performer)
+   - XGBoost 
    - LightGBM
-   - CatBoost 
-7. **Hyperparameter Tuning**: `RandomizedSearchCV` with 5-fold cross validation
-8. **Threshold Optimization**: adjusted decision threshold to `≥ 0.3` to maximize recall on minority class
+   - CatBoost ✅ (best performer)
+7. **Hyperparameter Tuning**: RandomizedSearchCV with 5-fold cross validation
+8. **Threshold Optimization**: adjusted decision threshold to ≥ 0.40 to maximize recall on minority class
  
 ---
  
-## 📊 Results
+## Results
  
-**Best Model: XGBoost**
+**Best Model: CatBoost**
  
  Metric ---------Score \
 ROC-AUC 0.67 \
 Precision (Churn) 0.40 \
-Recall (Churn) 0.60 \
-F1-Score (Churn) 0.48 \
-Though XGBoost was the best performer out of all the 3 models, it didn't really achieve desirable metrics.
-The model has a precision score of 40% on predicting customers that would churn, which means that out of all predicted customers that would churn, 40% were actual churners, the other 60% being false alarms.
-60% on recall, of the actual customers that churned, the model managed to catch 60% of them correctly, 40% were missed. 
-> Recall was prioritized as the key metric because in a churn context, missing a churner is more costly than a false alarm.
+Recall (Churn) 0.65 \
+F1-Score (Churn) 0.50 \
+Though CatBoost was the best performer out of all the 3 models, it didn't really achieve desirable metrics. The model has a precision score of 40% on predicting customers that would churn, which means that out of all predicted customers that were predicted to churn, only 40% were churners and 60% were false alarm. Out of all customers who actually churned, the model correctly identified 65% of them.
 
 Obviously there is still a lot of work that needs to be done in terms of improving model performance.
  
@@ -57,16 +54,18 @@ Obviously there is still a lot of work that needs to be done in terms of improvi
  
 ---
  
-## 🔍 Key Insights
+## Key Insights
  
 - Roughly **41.92%** of customers in the test_data are predicted to churn
-- Customers were segmented into risk levels: **Low, Medium, High and Critical**
-- Top drivers of churn identified in terms of feature importances include PrizmCode, Occupation, customer service interactions (MadeCallToRetentionTeam and CustomerSupportCalls), Credit rating.
+- The RFM analysis showed that majority of the customers are loyal customers with also a significant fraction of those who we have already lost or are about to lose.
+- Majority of the customers have a good credit score and also coming from a good income group.
+- Customers were segmented into churn risk levels: **Low, Medium, High and Critical**
 -Most of the customers have a Credit rating between 1-3, and customers with a credit rating in that range are most likely churn as compared to those with a credit rating of 5+
--Only 1,745 customers called retention vs 49,302 who didn't and 45% oof those who did churned, compared to the 28.2% of those who called but did not churned, which goes to show that customers who make calls to the retention team are most likely to churn.
+-Customers which normally make calls to the retention teams often indicate dissatisfaction or disapproval of a particular service, and those are the customers that normally attrition.
+- Top drivers of churn identified in terms of feature importances include duration of current device, duration of customer, monthly minutes, customer service interactions (MadeCallToRetentionTeam and CustomerSupportCalls), Credit rating.
 ---
  
-## 🗂️ Project Structure
+## Project Structure
  
 ```
 ├── train.csv
@@ -75,21 +74,6 @@ Obviously there is still a lot of work that needs to be done in terms of improvi
 ├── churn_distribution.png
 └── README.md
 ```
- 
----
- 
-## ▶️ How to Run
- 
-1. Clone the repository
-2. Install dependencies:
-```bash
-pip install pandas numpy scikit-learn imbalanced-learn xgboost lightgbm catboost matplotlib seaborn
-```
-3. Download the dataset from [Kaggle](https://www.kaggle.com/datasets/jpacse/datasets-for-churn-telecom/data) and place `train.csv` and `test.csv` in the root folder
-4. Run `churn_prediction.ipynb` end to end
- 
----
- 
 ## 👤 Author
  
 **Nitamo Olefhile**  
