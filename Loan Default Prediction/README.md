@@ -38,11 +38,11 @@ Loan default is a situation where a borrower fails to pay back the amount borrow
  
 **Best Model: CatBoost**
  
- Metric ---------Score \
-ROC-AUC 0.9783 \
-Precision (Churn) 0.78 \
-Recall (Churn) 0.84 \
-F1-Score (Churn) 0.80 \
+Metric--------------------Score \
+ROC-AUC----------------0.9783 \
+Precision (default)-------0.78 \
+Recall (default)----------0.84 \
+F1-Score (default--------0.80 \
 LightGBM and CatBoost pretty much recorded the same metrics, but CatBoost was ahead on ROC-AUC score with a minimal margin, hence selected as the best performing model. The 78% prediction score means that out of all the predicted defaulters, 78% were actual defaulters, meaning that the remaining 22% were not actual defaulters, which is not bad. The 84% mon recall means that out of the borrowers that defaulted, the model managed to predicted 85% of them, which is very exceptional.
  
 ### Loan default Distribution
