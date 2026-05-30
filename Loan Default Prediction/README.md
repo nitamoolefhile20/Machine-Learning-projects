@@ -1,6 +1,6 @@
 # Telecom Customer Churn Prediction
  
-Predicting loan default for a US agency call US. Small Business Administration (SBA) using machine learning. Built on the [Cell2Cell Telecom Churn Dataset](https://www.kaggle.com/datasets/jpacse/datasets-for-churn-telecom/data](https://data.sba.gov/dataset/7-a-504-foia/resource/d67d3ccb-2002-4134-a288-481b51cd3479)) form the US. SBA website.
+Predicting loan default for a US agency call US. Small Business Administration (SBA) using machine learning. Built on the [US. SBA Dataset](https://www.kaggle.com/datasets/jpacse/datasets-for-churn-telecom/data](https://data.sba.gov/dataset/7-a-504-foia/resource/d67d3ccb-2002-4134-a288-481b51cd3479)) form the US. SBA website.
  
 ---
  
@@ -10,8 +10,8 @@ Loan default is a situation where a borrower fails to pay back the amount borrow
  
 ## Dataset
  
-- **Source:** [Kaggle - Cell2Cell Telecom Churn]([https://www.kaggle.com/datasets/jpacse/datasets-for-churn-telecom/data](https://data.sba.gov/dataset/7-a-504-foia/resource/d67d3ccb-2002-4134-a288-481b51cd3479))
-- **Dataset:** 347514 records with 'Charged-off labels' as our defaults with the Loan Status variable.
+- **Source:** [US. SBA data]([https://www.kaggle.com/datasets/jpacse/datasets-for-churn-telecom/data](https://data.sba.gov/dataset/7-a-504-foia/resource/d67d3ccb-2002-4134-a288-481b51cd3479))
+- **Dataset:** 347514 records with 'Charged-off labels' as our defaults within the Loan Status variable, along other categories such as PaidInFull, Exempt etc.
 - **Target variable:** `Default` (binary- 1: 'CHGOFF', 0: PIF)
 - **Features:** borrower related features, loan related features
  
