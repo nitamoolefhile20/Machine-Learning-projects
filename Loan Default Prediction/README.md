@@ -1,4 +1,4 @@
-# LOAN DEFAULT Prediction
+# Loan Default Prediction
  
 Predicting loan default for a US agency called US. Small Business Administration (SBA) using machine learning. Built on the [US. SBA Dataset](https://www.kaggle.com/datasets/jpacse/datasets-for-churn-telecom/data](https://data.sba.gov/dataset/7-a-504-foia/resource/d67d3ccb-2002-4134-a288-481b51cd3479)) from the US. SBA website.
  
@@ -22,13 +22,13 @@ Loan default is a situation where a borrower fails to pay back the amount borrow
 1. **Data Cleaning**: filtered the dataset to only include data ranging from 2019-2022 as my training set and used 2023 data as my test set because some loans had not matured for them to be used. Then proceeded to handled missing values, fixed data types, dropped high-null columns
 2. **Exploratory Data Analysis (EDA)**: analyzed feature-default relations, feature correlations and default segment groups
 3. **Preprocessing Pipeline**: scaling, encoding using the ColumnTransformer
-4. **Class Imbalance**: Used SMOTE technique
-5. **Modeling**: trained and tuned three gradient boosting models:
+4. **Modeling**: trained and tuned three gradient boosting models:
    -Logistic Regression
    -Random Forest
    - XGBoost 
    - LightGBM
    - CatBoost ✅ (best performer)
+5. **Class Imbalance**: Used SMOTE technique
 6. **Hyperparameter Tuning**: RandomizedSearchCV with 5-fold cross validation
 7. **Threshold Optimization**: adjusted decision threshold to ≥ 0.35 to maximize recall on minority class
  
@@ -52,21 +52,20 @@ LightGBM and CatBoost pretty much recorded the same metrics, but CatBoost was ah
  
 ## Key Insights
  
-- Roughly **41.92%** of customers in the test_data are predicted to churn
-- The RFM analysis showed that majority of the customers are loyal customers with also a significant fraction of those who we have already lost or are about to lose.
-- Majority of the customers have a good credit score and also coming from a good income group.
-- Customers were segmented into churn risk levels: **Low, Medium, High and Critical**
+- Relatively newer businesses have a higher default rate compared to other business, maybe because of not having a well established cashflow since they are new unlike those that have been operating for longer.
+- Businesses which have a variable interest rate have the more likelihood of defaulting on their loans, because of the varying interest rates, unlike those who have a fixed rate.
+- Businesses without collateral have a high default rate compared to those with collateral.
 -Most of the customers have a Credit rating between 1-3, and customers with a credit rating in that range are most likely churn as compared to those with a credit rating of 5+
 -Customers which normally make calls to the retention teams often indicate dissatisfaction or disapproval of a particular service, and those are the customers that normally attrition.
-- Top drivers of churn identified in terms of feature importances include duration of current device, duration of customer, monthly minutes, customer service interactions (MadeCallToRetentionTeam and CustomerSupportCalls), Credit rating.
+- Strong predictors of loan default include duration of the loan, loan amount, loan interest, type of interest rate. Features such as how the loan processed, type of the business, franchise or not, offered no contribution to the performance of the model.
 ---
  
 ## Project Structure
  
 ```
 ├── foia-7a-fy2020-present-asof-250930.csv  #too big to upload
-├── churn_prediction.ipynb
-├── churn_distribution.png
+├── loan_default_prediction.ipynb
+├── default_distribution.png
 └── README.md
 ```
 ## 👤 Author
