@@ -1,6 +1,6 @@
 # Loan Default Prediction
  
-Predicting loan default for a US agency called US. Small Business Administration (SBA) using machine learning. Built on the [US. SBA Dataset](https://www.kaggle.com/datasets/jpacse/datasets-for-churn-telecom/data](https://data.sba.gov/dataset/7-a-504-foia/resource/d67d3ccb-2002-4134-a288-481b51cd3479)) from the US. SBA website.
+Predicting loan default for a US agency called US. Small Business Administration (SBA) using machine learning. Built on the [US. SBA Dataset](https://data.sba.gov/dataset/7-a-504-foia/resource/d67d3ccb-2002-4134-a288-481b51cd3479) from the US. SBA website.
  
 ---
  
